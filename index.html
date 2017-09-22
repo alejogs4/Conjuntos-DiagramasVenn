@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Diagramas</title>
+</head>
+
+<body>
+    <div class="container">
+       <div class="columns">
+            <section class="size-inputs column">
+                <h2 class="size-inputs-title">Modificar tamaño</h2>
+                <input type="text" id="a-size" placeholder="Conjunto A">
+                <br>
+                <input type="text" id="b-size" placeholder="Conjunto B">
+                <br>
+                <input type="text" id="c-size" placeholder="Conjunto C">
+            </section>
+            <section class="elements-inputs column">
+                <h2 class="elements-inputs-title">Elementos de los conjuntos</h2>
+                <input type="text" id="a-element" placeholder="Conjunto A">
+                <br>
+                <input type="text" id="b-element" placeholder="Conjunto B">
+                <br>
+                <input type="text" id="c-element" placeholder="Conjunto C">
+            </section>
+        </div>
+    </div>
+    <div id="venn"></div>
+
+    <script src="js/d3.js"></script>
+    <script src="js/venn.js"></script>
+    <script src="js/conjuntos.jsonp"></script>
+    <script src="js/diagrama-dist.js"></script>
+</body>
+
+</html>

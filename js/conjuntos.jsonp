@@ -1,0 +1,5 @@
+var sets = [
+         {"sets": [0], "label": "U", "size": 1},
+         {"sets": [1], "label": "A", "size": 1},
+         {"sets": [2], "label": "B", "size": 1},
+         {"sets": [3], "label": "C", "size": 1}];

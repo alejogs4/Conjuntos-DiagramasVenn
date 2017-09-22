@@ -7,7 +7,7 @@ let conjuntoA=[];
 let conjuntoB=[];
 let conjuntoC=[];
 
-var chart = venn.VennDiagram()
+let chart = venn.VennDiagram()
 .width(500)
 .height(500);
 

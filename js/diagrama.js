@@ -36,9 +36,24 @@ const updateGroup=(group,ob)=>{
             conjuntoC.push(el);
         },this);
     }
-    sets[group].label=ob.value;
-    diagrama.datum(sets).call(chart);
+    filterGroups(conjuntoA,conjuntoB,conjuntoC);
+    // sets[group].label=ob.value;
+    // diagrama.datum(sets).call(chart);
 }
+
+const filterGroups=(groupA,groupB,groupC)=>{
+    let intersectionGroupAAndGroupB=[];
+    groupA.forEach(function(el){
+        for(let i=0;i<groupB.length;i++){
+            if(el==groupB[i]){
+                intersectionGroupAAndGroupB.push(el);
+                break;
+            }
+        }
+    });
+}
+
+// Functions that update every group
 aInput.addEventListener('change',function(){
     updateGroup(A,this);
 });

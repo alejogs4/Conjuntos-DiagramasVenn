@@ -13,7 +13,15 @@ var aInput = document.getElementById("a-element"), bInput = document.getElementB
         conjuntoB.push(t);
     }, void 0) : n.forEach(function(t) {
         conjuntoC.push(t);
-    }, void 0), sets[t].label = e.value, diagrama.datum(sets).call(chart);
+    }, void 0), filterGroups(conjuntoA, conjuntoB, conjuntoC);
+}, filterGroups = function(t, e, n) {
+    var o = [];
+    t.forEach(function(t) {
+        for (var n = 0; n < e.length; n++) if (t == e[n]) {
+            o.push(t);
+            break;
+        }
+    });
 };
 
 aInput.addEventListener("change", function() {

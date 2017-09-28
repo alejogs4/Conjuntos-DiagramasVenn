@@ -13,42 +13,41 @@ var ejecutarButton = document.getElementById("ejecutar"), aInput = document.getE
     conjuntoATemporal = aInput.value.split(""), conjuntoB = bInput.value.split(""), 
     conjuntoBTemporal = bInput.value.split(""), conjuntoC = cInput.value.split(""), 
     conjuntoCTemporal = cInput.value.split(""), filterGroups(conjuntoA, conjuntoB, conjuntoC));
-}, filterGroups = function(t, e, o) {
-    var n = [], l = [], s = [], a = [];
-    n.length = 0, l.length = 0, s.length = 0, a.length = 0, filterArrays(t, e, n);
-    var i = n.filter(function(t, e) {
-        return n.indexOf(t) == e;
+}, filterGroups = function(t, e, n) {
+    var o = [], l = [], a = [], i = [];
+    o.length = 0, l.length = 0, a.length = 0, i.length = 0, filterArrays(t, e, o);
+    var s = o.filter(function(t, e) {
+        return o.indexOf(t) == e;
     });
-    filterNot(i, t), filterNot(i, e), filterArrays(i, o, a);
-    var r = a.filter(function(t, e) {
+    filterNot(s, t), filterNot(s, e), filterArrays(s, n, i);
+    var r = i.filter(function(t, e) {
+        return i.indexOf(t) == e;
+    });
+    filterNot(r, s), filterNot(r, n), filterNot(r, t), filterNot(r, e), filterArrays(e, n, a);
+    var u = a.filter(function(t, e) {
         return a.indexOf(t) == e;
     });
-    filterNot(r, i), filterNot(r, o), filterNot(r, t), filterNot(r, e), filterArrays(e, o, s);
-    var u = s.filter(function(t, e) {
-        return s.indexOf(t) == e;
-    });
-    filterNot(u, e), filterNot(u, o), filterArrays(o, t, l);
+    filterNot(u, e), filterNot(u, n), filterArrays(n, t, l);
     var c = l.filter(function(t, e) {
         return l.indexOf(t) == e;
     });
-    filterNot(c, o), filterNot(c, t), console.log(i), console.log(t), console.log(e), 
-    console.log(o), console.log(r), console.log(u), sets[A].label = t.join(","), sets[A].size = t.length + 10, 
-    sets[B].label = e.join(","), sets[B].size = e.length + 9, sets[C].label = o.join(","), 
-    sets[C].size = o.length + 8, sets[AB].label = i.join(","), sets[AB].size = i.length + 5, 
+    filterNot(c, n), filterNot(c, t), sets[A].label = t.join(","), sets[A].size = t.length + 10, 
+    sets[B].label = e.join(","), sets[B].size = e.length + 9, sets[C].label = n.join(","), 
+    sets[C].size = n.length + 8, sets[AB].label = s.join(","), sets[AB].size = s.length + 5, 
     sets[ABC].label = r.join(","), sets[ABC].size = r.length + 5, sets[BC].label = u.join(","), 
     sets[BC].size = u.length + 5, sets[7].label = c.join(","), sets[7].size = c.length + 5, 
     diagrama.datum(sets).call(chart);
 }, filterNot = function(t, e) {
     t.forEach(function(t) {
-        for (var o = 0; o < e.length; o++) if (t == e[o]) {
-            e.splice(o, 1);
+        for (var n = 0; n < e.length; n++) if (t == e[n]) {
+            e.splice(n, 1);
             break;
         }
     });
-}, filterArrays = function(t, e, o) {
+}, filterArrays = function(t, e, n) {
     t.forEach(function(t) {
-        for (var n = 0; n < e.length; n++) if (t == e[n]) {
-            o.push(t);
+        for (var o = 0; o < e.length; o++) if (t == e[o]) {
+            n.push(t);
             break;
         }
     });

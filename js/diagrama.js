@@ -95,12 +95,12 @@ const filterGroups = (groupA, groupB, groupC) => {
     filterNot(filterArrayAC, groupC);
     filterNot(filterArrayAC, groupA);
 
-    console.log(filterArrayAB);
-    console.log(groupA);
-    console.log(groupB);
-    console.log(groupC);
-    console.log(filterABC);
-    console.log(filterArrayBC);
+    // console.log(filterArrayAB);
+    // console.log(groupA);
+    // console.log(groupB);
+    // console.log(groupC);
+    // console.log(filterABC);
+    // console.log(filterArrayBC);
 
     sets[A].label = groupA.join(',');
     sets[A].size = groupA.length + 10;

@@ -69,9 +69,8 @@ const filterGroups = (groupA, groupB, groupC) => {
 
     filterNot(filterArrayAB, groupA);
     filterNot(filterArrayAB, groupB);
-
+    //Filtros para la interseccion ABC
     filterArrays(filterArrayAB, groupC, intersectionABC);
-
     let filterABC = intersectionABC.filter((el, pos) => {
         return intersectionABC.indexOf(el) == pos;
     });
@@ -102,26 +101,26 @@ const filterGroups = (groupA, groupB, groupC) => {
     // console.log(filterABC);
     // console.log(filterArrayBC);
 
-    sets[A].label = groupA.join(',');
+    sets[A].label = groupA.join(' ');
     sets[A].size = groupA.length + 10;
 
-    sets[B].label = groupB.join(',');
+    sets[B].label = "/////"+groupB.join(' ');
     sets[B].size = groupB.length + 9;
 
     sets[C].label = groupC.join(',');
     sets[C].size = groupC.length + 8;
     
 
-    sets[AB].label = filterArrayAB.join(',');
+    sets[AB].label = filterArrayAB.join(' ');
     sets[AB].size = filterArrayAB.length + 5;
 
     sets[ABC].label = filterABC.join(',');
     sets[ABC].size = filterABC.length + 5;
 
-    sets[BC].label = filterArrayBC.join(',');
+    sets[BC].label = filterArrayBC.join(' ');
     sets[BC].size = filterArrayBC.length + 5;
 
-    sets[7].label = filterArrayAC.join(',');
+    sets[7].label = filterArrayAC.join(' ');
     sets[7].size = filterArrayAC.length + 5;
     diagrama.datum(sets).call(chart);
 }
@@ -165,7 +164,7 @@ diagrama.selectAll("g")
         // sort all the areas relative to the current item
         venn.sortAreas(diagrama, d);
         // Display a tooltip with the current size
-
+        console.log(this);
         tooltip.transition().duration(400).style("opacity", .9);
         tooltip.text(d.label);
         // highlight the current path

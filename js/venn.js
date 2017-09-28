@@ -1383,10 +1383,11 @@
 
             // if we've been passed a fontSize explicitly, use it to
             // transition
+            //Ancla
             if (fontSize !== null) {
-                enterText.style("font-size", "0px");
+                enterText.style("font-size", "5px");
                 updateText.style("font-size", fontSize);
-                exitText.style("font-size", "0px");
+                exitText.style("font-size", "5px");
             }
 
 

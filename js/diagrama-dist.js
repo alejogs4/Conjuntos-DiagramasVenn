@@ -31,7 +31,7 @@ var ejecutarButton = document.getElementById("ejecutar"), aInput = document.getE
     var c = l.filter(function(t, e) {
         return l.indexOf(t) == e;
     });
-    filterNot(c, e), filterNot(c, t), console.log(i), console.log(t), console.log(e), 
+    filterNot(c, o), filterNot(c, t), console.log(i), console.log(t), console.log(e), 
     console.log(o), console.log(r), console.log(u), sets[A].label = t.join(","), sets[A].size = t.length + 10, 
     sets[B].label = e.join(","), sets[B].size = e.length + 9, sets[C].label = o.join(","), 
     sets[C].size = o.length + 8, sets[AB].label = i.join(","), sets[AB].size = i.length + 5, 

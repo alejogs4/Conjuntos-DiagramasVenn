@@ -81,7 +81,6 @@ const filterGroups = (groupA, groupB, groupC) => {
     filterNot(filterABC, groupB);
 
     filterArrays(groupB, groupC, intersectionGroupBAndGroupC);
-
     let filterArrayBC = intersectionGroupBAndGroupC.filter((el, pos) => {
         return intersectionGroupBAndGroupC.indexOf(el) == pos;
     });
@@ -90,11 +89,10 @@ const filterGroups = (groupA, groupB, groupC) => {
 
 
     filterArrays(groupC, groupA, intersectionGroupAAndGroupC);
-
     let filterArrayAC = intersectionGroupAAndGroupC.filter((el, pos) => {
         return intersectionGroupAAndGroupC.indexOf(el) == pos;
     });
-    filterNot(filterArrayAC, groupB);
+    filterNot(filterArrayAC, groupC);
     filterNot(filterArrayAC, groupA);
 
     console.log(filterArrayAB);
@@ -112,6 +110,7 @@ const filterGroups = (groupA, groupB, groupC) => {
 
     sets[C].label = groupC.join(',');
     sets[C].size = groupC.length + 8;
+    
 
     sets[AB].label = filterArrayAB.join(',');
     sets[AB].size = filterArrayAB.length + 5;

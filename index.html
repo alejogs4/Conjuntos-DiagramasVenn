@@ -11,19 +11,24 @@
 </head>
 
 <body>
-    <div class="container">
-       <div class="columns">
-            <section class="elements-inputs column">
-                <h2 class="elements-inputs-title">Elementos de los conjuntos</h2>
-                <input type="text" id="a-element" placeholder="Conjunto A">
-                <br>
-                <input type="text" id="b-element" placeholder="Conjunto B">
-                <br>
-                <input type="text" id="c-element" placeholder="Conjunto C">
-            </section>
-        </div>
-        <div id="venn"></div>
+
+    <div>
+            <div class="container">
+                    <div class="columns">
+                         <section class="elements-inputs column">
+                             <h2 class="elements-inputs-title">Elementos de los conjuntos</h2>
+                             <input type="text" id="a-element" placeholder="Conjunto A">
+                             <br>
+                             <input type="text" id="b-element" placeholder="Conjunto B">
+                             <br>
+                             <input type="text" id="c-element" placeholder="Conjunto C">
+                         </section>
+                         <button id="ejecutar">Ejecutar</button>
+                     </div>
+                     <div id="venn"></div>
+                 </div>
     </div>
+
 
     <script src="js/d3.js"></script>
     <script src="js/venn.js"></script>

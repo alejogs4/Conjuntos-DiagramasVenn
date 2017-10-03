@@ -9,6 +9,7 @@ const BC = 5;
 let conjuntoA = [];
 let conjuntoB = [];
 let conjuntoC = [];
+let conjuntoU = [];
 
 let chart = venn.VennDiagram()
     .width(500)
@@ -18,10 +19,14 @@ var diagrama = d3.select("#venn")
 diagrama.datum(sets).call(chart);
 
 let ejecutarButton = document.getElementById('ejecutar');
-let ejecutar4=document.getElementById('ejecutar2');
+let ejecutar4 = document.getElementById('ejecutar2');
 let aInput = document.getElementById('a-element');
 let bInput = document.getElementById('b-element');
 let cInput = document.getElementById('c-element');
+
+let groupUniversal = document.getElementById('universal-group');
+let uInput = document.getElementById('u-element');
+let btnUniversal = document.getElementById('btn-universal');
 
 const updateGroup = (exercise) => {
     if (aInput.value == "" || bInput.value == "" || cInput.value == "") {
@@ -32,11 +37,11 @@ const updateGroup = (exercise) => {
         conjuntoB = bInput.value.split('');
         conjuntoC = cInput.value.split('');
 
-        filterGroups(conjuntoA, conjuntoB, conjuntoC,exercise);
+        filterGroups(conjuntoA, conjuntoB, conjuntoC, exercise);
     }
 }
 
-const filterGroups = (groupA, groupB, groupC,exercise) => {
+const filterGroups = (groupA, groupB, groupC, exercise) => {
     let intersectionGroupAAndGroupB = [];
     let intersectionGroupAAndGroupC = [];
     let intersectionGroupBAndGroupC = [];
@@ -46,7 +51,7 @@ const filterGroups = (groupA, groupB, groupC,exercise) => {
     intersectionGroupAAndGroupC.length = 0;
     intersectionGroupBAndGroupC.length = 0;
     intersectionABC.length = 0;
-    
+
 
     filterArrays(groupA, groupB, intersectionGroupAAndGroupB);
     let filterArrayAB = intersectionGroupAAndGroupB.filter((el, pos) => {
@@ -82,12 +87,12 @@ const filterGroups = (groupA, groupB, groupC,exercise) => {
     filterNot(filterArrayAC, groupC);
     filterNot(filterArrayAC, groupA);
 
-    if(exercise==1){
-        resizeGroups("","","///","///","///","///","///",groupA,groupB,groupC,filterArrayAB,filterABC,filterArrayBC,filterArrayAC);
-    }else if(exercise==2){
-        resizeGroups("","","","///","","///","///",groupA,groupB,groupC,filterArrayAB,filterABC,filterArrayBC,filterArrayAC);
+    if (exercise == 1) {
+        resizeGroups("", "", "///", "///", "///", "///", "///", groupA, groupB, groupC, filterArrayAB, filterABC, filterArrayBC, filterArrayAC);
+    } else if (exercise == 2) {
+        resizeGroups("", "", "", "///", "", "///", "///", groupA, groupB, groupC, filterArrayAB, filterABC, filterArrayBC, filterArrayAC);
     }
-
+    groupUniversal.classList.toggle('inactive');
 }
 
 const filterNot = (intersection, group) => {
@@ -112,37 +117,63 @@ const filterArrays = (main, reference, newA) => {
     });
 }
 
-const resizeGroups=(separatorA,separatorB,separatorC,separatorAB,separatorABC,separatorBC,separatorAC,groupA,groupB,groupC,AB,ABC,BC,AC)=>{
-    sets[A].label = separatorA+" "+groupA.join(' ')+" "+separatorA;
+const resizeGroups = (separatorA, separatorB, separatorC, separatorAB, separatorABC, separatorBC, separatorAC, groupA, groupB, groupC, AB, ABC, BC, AC) => {
+    sets[A].label = separatorA + " " + groupA.join(' ') + " " + separatorA;
     sets[A].size = groupA.length + 10;
 
-    sets[B].label = separatorB+" "+groupB.join(' ')+" "+separatorB;
+    sets[B].label = separatorB + " " + groupB.join(' ') + " " + separatorB;
     sets[B].size = groupB.length + 9;
 
-    sets[C].label = separatorC+" "+groupC.join(' ')+" "+separatorC;
+    sets[C].label = separatorC + " " + groupC.join(' ') + " " + separatorC;
     sets[C].size = groupC.length + 8;
-    
 
-    sets[4].label = separatorAB+" "+AB.join(' ')+" "+separatorAB;
+
+    sets[4].label = separatorAB + " " + AB.join(' ') + " " + separatorAB;
     sets[4].size = AB.length + 5;
 
-    sets[6].label = separatorABC+" "+ABC.join(' ')+" "+separatorABC;
+    sets[6].label = separatorABC + " " + ABC.join(' ') + " " + separatorABC;
     sets[6].size = ABC.length + 5;
 
-    sets[5].label = separatorBC+" "+BC.join(' ')+" "+separatorBC;
+    sets[5].label = separatorBC + " " + BC.join(' ') + " " + separatorBC;
     sets[5].size = BC.length + 5;
 
-    sets[7].label = separatorAC+" "+AC.join(' ')+" "+separatorAC;
+    sets[7].label = separatorAC + " " + AC.join(' ') + " " + separatorAC;
     sets[7].size = AC.length + 5;
     diagrama.datum(sets).call(chart);
+}
+const addUniversal = () => {
+    let conjuntos = (aInput.value + bInput.value + cInput.value).split('');
+    let universalGroup;
+    if (uInput.value == "") {
+        alert("El valor universal debe tener algun valor");
+    }
+    else {
+        universalGroup = uInput.value.split('');
+        conjuntos.forEach((el) => {
+            for (let i = 0; i < universalGroup.length; i++) {
+                if (el == universalGroup[i]) {
+                    alert("El elemento " + el+" ya esta en el conjunto");
+                    return;
+                }
+            }
+        });
+    }
+    console.log(universalGroup);
+    sets[0].label = universalGroup.join(' ');
+    sets[0].size = sets[0].size + universalGroup.length;
+    diagrama.datum(sets).call(chart);
+
 }
 
 // Functions that update every group
 ejecutarButton.addEventListener('click', () => {
     updateGroup(1);
 });
-ejecutar4.addEventListener('click',()=>{
+ejecutar4.addEventListener('click', () => {
     updateGroup(2);
+});
+btnUniversal.addEventListener('click', () => {
+    addUniversal();
 });
 
 
@@ -157,7 +188,6 @@ diagrama.selectAll("g")
         // sort all the areas relative to the current item
         venn.sortAreas(diagrama, d);
         // Display a tooltip with the current size
-        console.log(this);
         tooltip.transition().duration(400).style("opacity", .9);
         tooltip.text(d.label);
         // highlight the current path

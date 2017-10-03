@@ -118,6 +118,8 @@ const filterArrays = (main, reference, newA) => {
 }
 
 const resizeGroups = (separatorA, separatorB, separatorC, separatorAB, separatorABC, separatorBC, separatorAC, groupA, groupB, groupC, AB, ABC, BC, AC) => {
+    sets[0].label="//////";
+    
     sets[A].label = separatorA + " " + groupA.join(' ') + " " + separatorA;
     sets[A].size = groupA.length + 10;
 
@@ -159,7 +161,7 @@ const addUniversal = () => {
         });
     }
     console.log(universalGroup);
-    sets[0].label = universalGroup.join(' ');
+    sets[0].label = "/// "+universalGroup.join(' ')+" ///";
     sets[0].size = sets[0].size + universalGroup.length;
     diagrama.datum(sets).call(chart);
 

@@ -42,17 +42,18 @@ var ejecutarButton = document.getElementById("ejecutar"), ejecutar4 = document.g
         }
     });
 }, resizeGroups = function(t, e, n, l, o, a, i, s, r, u, c, d, p, f) {
-    sets[A].label = t + " " + s.join(" ") + " " + t, sets[A].size = s.length + 10, sets[B].label = e + " " + r.join(" ") + " " + e, 
-    sets[B].size = r.length + 9, sets[C].label = n + " " + u.join(" ") + " " + n, sets[C].size = u.length + 8, 
-    sets[4].label = l + " " + c.join(" ") + " " + l, sets[4].size = c.length + 5, sets[6].label = o + " " + d.join(" ") + " " + o, 
-    sets[6].size = d.length + 5, sets[5].label = a + " " + p.join(" ") + " " + a, sets[5].size = p.length + 5, 
-    sets[7].label = i + " " + f.join(" ") + " " + i, sets[7].size = f.length + 5, diagrama.datum(sets).call(chart);
+    sets[0].label = "//////", sets[A].label = t + " " + s.join(" ") + " " + t, sets[A].size = s.length + 10, 
+    sets[B].label = e + " " + r.join(" ") + " " + e, sets[B].size = r.length + 9, sets[C].label = n + " " + u.join(" ") + " " + n, 
+    sets[C].size = u.length + 8, sets[4].label = l + " " + c.join(" ") + " " + l, sets[4].size = c.length + 5, 
+    sets[6].label = o + " " + d.join(" ") + " " + o, sets[6].size = d.length + 5, sets[5].label = a + " " + p.join(" ") + " " + a, 
+    sets[5].size = p.length + 5, sets[7].label = i + " " + f.join(" ") + " " + i, sets[7].size = f.length + 5, 
+    diagrama.datum(sets).call(chart);
 }, addUniversal = function() {
     var t = (aInput.value + bInput.value + cInput.value).split(""), e = void 0;
     "" == uInput.value ? alert("El valor universal debe tener algun valor") : (e = uInput.value.split(""), 
     t.forEach(function(t) {
         for (var n = 0; n < e.length; n++) if (t == e[n]) return void alert("El elemento " + t + " ya esta en el conjunto");
-    })), console.log(e), sets[0].label = e.join(" "), sets[0].size = sets[0].size + e.length, 
+    })), console.log(e), sets[0].label = "/// " + e.join(" ") + " ///", sets[0].size = sets[0].size + e.length, 
     diagrama.datum(sets).call(chart);
 };
 
